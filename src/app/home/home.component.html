@@ -6,7 +6,7 @@
       <i class="fa fa-check" aria-hidden="true"></i>
       <strong>Success</strong>
     </div>
-    <button type="button" class="btn btn-elegant waves-light topButton" mdbRippleRadius>
+    <button *ngIf="authservice.isLoggedIn()" type="button" class="btn btn-elegant waves-light topButton" mdbRippleRadius>
         <a class="white-text" (click)="showAdd()">{{btnText}}</a>
     </button>
     <div class="container">
@@ -34,9 +34,18 @@
     </div>
   </div>
   <div class="col-lg-3">
-    <button type="button" class="btn btn-elegant waves-light sideButton" mdbRippleRadius>
+    <button *ngIf="authservice.isLoggedIn()" type="button" class="btn btn-elegant waves-light sideButton" mdbRippleRadius>
       <a class="white-text" (click)="showAdd()">{{btnText}}</a>
     </button>
+    <div *ngIf="authservice.user">
+      <div *ngIf="authservice.user | async as user">
+        <h5>{{ user.displayName }}</h5>
+        <img [src]="user.photoURL" alt="" class="userimage">
+      </div>
+    </div>
+    <div *ngIf="!authservice.isLoggedIn()" class="sideButton">
+      Please login to add new idea
+    </div>
   </div>
 </div>
 

@@ -1,14 +1,17 @@
 <div class="card">
     <div class="card-body">
+        <p *ngIf="reminder" class="error">
+            <i class="fa fa-close ml-3" aria-hidden="true"></i> Please login to add comment
+        </p>
         <div class="md-form form-sm">
             <i class="fa fa-comment prefix" aria-hidden="true"></i>
             <input mdbActive type="text" [(ngModel)]="comment" name="title" id="comment" class="form-control">
-            <label for="ideaTitle" class="">Your Comment</label>
+            <label for="comment" class="">Your Comment</label>
           </div>
           <div class="md-form form-sm">
             <i class="fa fa-user prefix" aria-hidden="true"></i>
-            <input mdbActive type="text" [(ngModel)]="by" name="title" id="comment" class="form-control">
-            <label for="ideaTitle" class="">Your name</label>
+            <input mdbActive type="text" [(ngModel)]="by" name="title" id="commenter" class="form-control">
+            <label for="commenter" class="">Your name</label>
           </div>
           <button type="button" class="btn btn-elegant waves-light continueButton" mdbRippleRadius>
               <a class="white-text" (click)="addNew()">Submit</a>

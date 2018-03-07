@@ -1,21 +1,69 @@
 <header>
-  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark black">
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark black justify-content-between">
     <logo>
         <a href="#" class="navbar-brand">IdeaBox</a>
     </logo>
     <links>
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link waves-light" routerLink="" mdbRippleRadius>Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link waves-light" routerLink="" mdbRippleRadius>Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbRippleRadius>Pricing</a>
+              <a class="nav-link waves-light" mdbRippleRadius>Pricing</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" >Disabled</a>
+              <a class="nav-link disabled" >Disabled</a>
             </li>
         </ul>
+        <button type="button" *ngIf="!authservice.isLoggedIn()" class="btn btn-elegant waves-light ml-auto" (click)="showmodal()" mdbRippleRadius><i class="fa fa-user mr-2" aria-hidden="true"></i>Login</button>
+        <button type="button" *ngIf="authservice.isLoggedIn()" class="btn btn-elegant waves-light ml-auto" (click)="logout()" mdbRippleRadius><i class="fa fa-user mr-2" aria-hidden="true"></i>Logout</button>
     </links>
   </mdb-navbar>
-
+  <div mdbModal #form="mdb-modal" class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+          <div *ngIf="!showReg">
+            <div class="md-form">
+              <i class="fa fa-user prefix"></i>
+              <input mdbActive [(ngModel)]="username" type="text" id="username" class="form-control">
+              <label for="username">Username</label>
+            </div>
+            <div class="md-form">
+              <i class="fa fa-key prefix"></i>
+              <input mdbActive [(ngModel)]="password" type="password" id="password" class="form-control">
+              <label for="password">Password</label>
+            </div>
+            <div class="ml-auto">
+              Don't have account? <a class="signup" (click)="toggleReg()">Sign Up</a>
+            </div>
+            <button type="button" class="btn btn-elegant waves-light ml-auto" (click)="signin()" mdbRippleRadius>Login</button>
+            <button type="button" class="btn btn-elegant waves-light"  mdbRippleRadius (click)="signGoogle()">
+              <i class="fa fa-google" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-elegant waves-light"  mdbRippleRadius (click)="signFacebook()">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div *ngIf="showReg">
+            <div class="md-form">
+              <i class="fa fa-user prefix"></i>
+              <input mdbActive [(ngModel)]="username" type="text" id="username" class="form-control">
+              <label for="username">Username</label>
+            </div>
+            <div class="md-form">
+              <i class="fa fa-key prefix"></i>
+              <input mdbActive [(ngModel)]="reppassword" type="password" id="password" class="form-control">
+              <label for="password">Password</label>
+            </div>
+            <div class="md-form">
+              <i class="fa fa-key prefix"></i>
+              <input mdbActive [(ngModel)]="password" type="password" id="passwordrep" class="form-control">
+              <label for="passwordrep">Repeat your password</label>
+            </div>
+            <button type="button" class="btn btn-elegant waves-light ml-auto" (click)="signup()" mdbRippleRadius>Sign Up</button>
+          </div>
+        </div>
+    </div>
+  </div>
 </header>

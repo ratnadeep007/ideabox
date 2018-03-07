@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { NgOption } from '@ng-select/ng-select';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 interface Idea {
   title: string;
@@ -11,6 +12,7 @@ interface Idea {
   summary: string;
   category: string;
   claps: string;
+  userid?: string;
 }
 
 @Component({
@@ -37,7 +39,7 @@ export class NewComponent implements OnInit {
   @Output() hideEvent = new EventEmitter<boolean>();
   @Input() message: any;
 
-  constructor(private afs:AngularFirestore, private route: Router) { }
+  constructor(private afs:AngularFirestore, private route: Router, public authservice: AuthService) { }
 
   ngOnInit() {
     if(this.message) {

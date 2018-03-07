@@ -8,6 +8,7 @@ import { NewcommentComponent } from '../newcomment/newcomment.component';
 import { NewComponent } from '../new/new.component';
 import { DataComponent } from '../data/data.component';
 import { DetailEditComponent } from '../detail-edit/detail-edit.component';
+import { AuthService} from '../services/auth.service';
 
 interface Idea {
   title: string;
@@ -56,9 +57,10 @@ export class IdeaComponent implements OnInit {
   editDetailBool: boolean = false;
   detailMessage = {};
   editMessage = {};
+  loginreminder: boolean =  false;
 
   constructor(private route: ActivatedRoute, private afs: AngularFirestore,
-              private cd: ChangeDetectorRef, private router: Router) { }
+              private cd: ChangeDetectorRef, private router: Router, public authservice: AuthService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -116,10 +118,15 @@ export class IdeaComponent implements OnInit {
   }
 
   like() {
-    this.clapCount = this.clapCount + 1;
-    console.log(this.clapCount);
-    this.ideaCol = this.afs.collection<Idea>('ideas');
-    this.ideaCol.doc(this.id).update({ claps: this.clapCount})
+    if(this.authservice.isLoggedIn()) {
+      this.clapCount = this.clapCount + 1;
+      console.log(this.clapCount);
+      this.ideaCol = this.afs.collection<Idea>('ideas');
+      this.ideaCol.doc(this.id).update({ claps: this.clapCount})
+    } else {
+      this.loginreminder = true;
+      console.log('login');
+    }
   }
 
   editIdea() {

@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { NewComponent } from '../new/new.component';
 import { SearchComponent } from '../search/search.component';
+import { AuthService } from '../services/auth.service';
 
 interface Idea {
   title: string;
@@ -13,6 +14,13 @@ interface Idea {
   summary: string;
   category: string;
   claps: string;
+}
+
+interface User {
+  uid: string;
+  email: string;
+  photoURL?: string;
+  displayName?: string;
 }
 
 interface IdeaId extends Idea {
@@ -30,6 +38,8 @@ export class HomeComponent implements OnInit {
   ideasCol: AngularFirestoreCollection<Idea>;
   ideas: any;
   docCount: number;
+  userDoc: AngularFirestoreDocument<User>;
+  user: Observable<User>;
 
   btnText: string = "Add new idea";
   isVisible: boolean = false;
@@ -37,12 +47,17 @@ export class HomeComponent implements OnInit {
   isActive: string = "animated slideInDown";
   ideaTitle: string;
   ideaAuthor: string;
+  userid: string;
+  displayname: string;
+  photurl: string;
 
   message = "Add new idea";
 
-  constructor(private afs: AngularFirestore, private router: Router) { }
+  constructor(private afs: AngularFirestore, private router: Router, public authservice: AuthService) {
+  }
 
   ngOnInit() {
+
     this.ideasCol = this.afs.collection('ideas');
     this.ideas = this.ideasCol.snapshotChanges()
       .map(actions => {
@@ -52,6 +67,12 @@ export class HomeComponent implements OnInit {
           return { id, data };
         });
       });
+      console.log(this.userid);
+    this.userDoc =this.afs.doc(`users/${this.userid}`);
+    this.user = this.userDoc.valueChanges();
+    this.user.subscribe(val => {
+      console.log(val);
+    });
   }
 
   showAdd() {
@@ -71,7 +92,7 @@ export class HomeComponent implements OnInit {
   }
 
   showIdea(ideaId) {
-    this.router.navigate(['/', ideaId]);
+    this.router.navigate(['/idea/', ideaId]);
   }
 
   receiveMessage($event) {

@@ -7,10 +7,10 @@
                   <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  {{ (idea | async)?.claps }}
               </span>
         </a>
-          <div class="editIcon" (click)="editIdea()">
+          <div *ngIf="authservice.isLoggedIn()" class="editIcon" (click)="editIdea()">
             <i class="fa fa-pencil" aria-hidden="true"></i>
           </div>
-          <div class="deleteIcon" (click)="deleteIdea()">
+          <div *ngIf="authservice.isLoggedIn()" class="deleteIcon" (click)="deleteIdea()">
             <i class="fa fa-trash" aria-hidden="true"></i>
           </div>
       </h3>
@@ -31,7 +31,7 @@
           </div>
         </a>
         <div class="editIcon" *ngIf="showDetailVar" (click)="editDetail()">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <i class="fa fa-pencil" aria-hidden="true" *ngIf="authservice.isLoggedIn()"></i>
         </div>
       </div>
       <div *ngIf="showDetailVar || editDetailBool">
@@ -46,7 +46,7 @@
             <div class="card-body">
               <h5 class="card-title">
                 {{ comment.data.comment }}
-                <a  (click)="deleteComment(comment.id)">
+                <a  (click)="deleteComment(comment.id)" *ngIf="authservice.isLoggedIn()">
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>
               </h5>
@@ -66,9 +66,9 @@
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
-      <button type="button" class="btn btn-elegant waves-light sideButton" mdbRippleRadius>
+      <!-- <button type="button" class="btn btn-elegant waves-light sideButton" mdbRippleRadius>
           <a class="white-text" (click)="showAdd()">NOT WORKING</a>
-      </button>
+      </button> -->
   </div>
 </div>
 

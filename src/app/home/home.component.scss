@@ -61,6 +61,12 @@ app-search {
   font-weight: 700;
 }
 
+.userimage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50px;
+}
+
 @media only screen and (max-width: 991px) and (min-width: 150px) {
   .container {
     padding: 0;
@@ -79,6 +85,11 @@ app-search {
 
   .sideButton {
     display: none;
+  }
+
+  .userimage {
+    width: 150px;
+    height: 150px;
   }
 
 }
