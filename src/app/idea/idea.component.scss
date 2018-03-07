@@ -1,0 +1,44 @@
+.detail {
+  background-color: #d5e1df;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+app-new {
+  margin: 3px;
+}
+
+.card {
+  margin-top: 6px;
+}
+.test {
+  background-color: red;
+}
+
+.fa-trash {
+  margin: 2px;
+  font-size: 1.2rem;
+}
+
+.fa-trash:hover {
+  transform: scale(1.2);
+}
+
+.btn:hover {
+  border-left: 5px solid red;
+}
+
+.editIcon, .deleteIcon {
+  display: inline-block;
+}
+
+.editIcon {
+  font-size: 1.2rem;
+}
+.editIcon:hover {
+  font-size: 1.5rem;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+}

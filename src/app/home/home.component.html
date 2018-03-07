@@ -1,0 +1,42 @@
+<div class="row justify-content-center h-100">
+
+  <div class="col-lg-9 col-md-12 col-sm-12 left-side">
+    <app-search></app-search>
+    <div *ngIf="alertBox" class="alertBox">
+      <i class="fa fa-check" aria-hidden="true"></i>
+      <strong>Success</strong>
+    </div>
+    <button type="button" class="btn btn-elegant waves-light topButton" mdbRippleRadius>
+        <a class="white-text" (click)="showAdd()">{{btnText}}</a>
+    </button>
+    <div class="container">
+      <div [className]="isActive" *ngIf="isVisible">
+        <app-new (hideEvent)="receiveMessage($event)" [message]="message"></app-new>
+      </div>
+      <div *ngIf="!isVisible">
+        <a  *ngFor="let idea of ideas | async">
+          <div class="card animated fadeInUp" (click)="showIdea(idea.id)">
+            <!--Card content-->
+            <div class="card-body">
+              <!--Title-->
+              <h4 class="card-title">{{ idea.data.title }}
+                <span class="badge black">
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  {{ idea.data.claps }}
+                </span>
+              </h4>
+              <!--Text-->
+              <p class="card-text">{{ idea.data.author }}</p>
+              <div class="card-text">{{ idea.data.summary }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <button type="button" class="btn btn-elegant waves-light sideButton" mdbRippleRadius>
+      <a class="white-text" (click)="showAdd()">{{btnText}}</a>
+    </button>
+  </div>
+</div>
+

@@ -1,0 +1,12 @@
+.card {
+  // overflow: hidden;
+}
+
+.continueButton:hover {
+  border-left: 5px solid green;
+}
+
+ng-select {
+  position: relative;
+  z-index: 99;
+}

@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-lg-9 col-md-9 col-sm-12">
+    <div class="detail container">
+      <h3><strong>{{ (idea | async)?.title }}</strong>
+        <a class="likeBadge" (click)="like()">
+          <span class="badge black">
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  {{ (idea | async)?.claps }}
+              </span>
+        </a>
+          <div class="editIcon" (click)="editIdea()">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </div>
+          <div class="deleteIcon" (click)="deleteIdea()">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </div>
+      </h3>
+      <h4>{{ (idea | async)?.author }}</h4>
+      <p>
+        {{ (idea | async)?.summary }}
+      </p>
+      <div>
+        <a (click)="showDetail()">
+          <div *ngIf="showDetailVar">
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            <strong>Details</strong>
+
+          </div>
+          <div *ngIf="!showDetailVar">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            <strong>Details</strong>
+          </div>
+        </a>
+        <div class="editIcon" *ngIf="showDetailVar" (click)="editDetail()">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div *ngIf="showDetailVar || editDetailBool">
+        <app-data [message]="detailMessage" *ngIf="!editDetailBool"></app-data>
+        <app-detail-edit [message]="detailMessage" *ngIf="editDetailBool"></app-detail-edit>
+      </div>
+    </div>
+    <div *ngIf="!editVisible">
+      <div class="comment container">
+        <div *ngIf="oldShow">
+          <div class="card animated fadeInUp" *ngFor="let comment of comments | async">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ comment.data.comment }}
+                <a  (click)="deleteComment(comment.id)">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+              </h5>
+                <p class="card-text">{{ comment.data.by }}</p>
+              <!-- <div class="card-text">{{ comment.data.summary }}</div> -->
+            </div>
+          </div>
+          <app-newcomment [ideaId]="id"></app-newcomment>
+        </div>
+        <div *ngIf="newShow">
+          <!-- <app-newcomment></app-newcomment> -->
+        </div>
+      </div>
+    </div>
+    <div *ngIf="editVisible">
+      <app-new (hideEvent)="receiveMessage($event)" [message]="message"></app-new>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12">
+      <button type="button" class="btn btn-elegant waves-light sideButton" mdbRippleRadius>
+          <a class="white-text" (click)="showAdd()">NOT WORKING</a>
+      </button>
+  </div>
+</div>
+
+<ng-template #newcomment>
+  khfkalshf.
+</ng-template>

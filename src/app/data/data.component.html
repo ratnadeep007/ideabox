@@ -1,0 +1,9 @@
+<div *ngFor="let detail of details | async">
+  <div *ngIf="detail.data.detail; else nodetail">
+    {{detail.data.detail}}
+  </div>
+</div>
+
+<ng-template #nodetail>
+  No details found click on pen icon to add one.
+</ng-template>

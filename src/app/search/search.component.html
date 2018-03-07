@@ -1,0 +1,14 @@
+<div class="md-form form-group form-inline">
+    <i class="fa fa-search prefix"></i>
+    <input [(ngModel)]="searchterm" (keydown)="search($event)" mdbActive type="text" id="form1" class="form-control">
+    <label for="form1" class="">Search Idea</label>
+  </div>
+<div *ngIf="searchBool">
+    <ul *ngFor="let idea of ideas">
+        <li>{{idea.title}}
+        {{idea.summary}}</li>
+      </ul>
+      <div *ngIf="idea?.length < 1">
+        <p>Sorry, no idea entry found</p>
+      </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">{{message.name}}</h4>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="md-form form-sm">
+                  <i class="fa fa-lightbulb-o prefix" aria-hidden="true"></i>
+                  <input mdbActive type="text" [(ngModel)]="title" name="title" id="ideaTitle" class="form-control">
+                  <label for="ideaTitle" class="">Title for your idea</label>
+                </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="md-form form-sm">
+                  <i class="fa fa-user prefix" aria-hidden="true"></i>
+                  <input mdbActive type="text" [(ngModel)]="author" name="author" id="ideaAuthor" class="form-control">
+                  <label for="ideaAuthor" class="">Your Name</label>
+                </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="md-form">
+                    <i class="fa fa-pencil prefix"></i>
+                    <textarea [(ngModel)]="summary" mdbActive type="text" id="form8" class="md-textarea"></textarea>
+                    <label for="form8">Something about your idea</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <ng-select [items]="categories"
+                  bindLabel="name"
+                  bindValue="id"
+                  placeholder="Select a category"
+                  [(ngModel)]="selectedCategoryId">
+                </ng-select>
+            </div>
+
+            <div class="col-6">
+                <button type="button" class="btn btn-elegant waves-light continueButton" mdbRippleRadius>
+                    <a class="white-text" (click)="addNew()">Continue</a>
+                  </button>
+            </div>
+        </div>
+      </div>
+
+
+</div>
+

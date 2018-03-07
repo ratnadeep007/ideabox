@@ -1,0 +1,84 @@
+.row {
+
+  height: 100%;
+}
+
+app-search {
+  padding-top: 25px;
+}
+
+.md-form {
+  margin-top: 2px;
+  width: 100%;
+}
+
+.left-side {
+  height: 100%;
+}
+
+.container:before {
+  // overflow-y: hidden;
+}
+
+.container {
+  height: 100%;
+  padding: 30px;
+  // overflow-y: hidden;
+}
+
+.card {
+  margin: 3px;
+  border-radius: 3px;
+  width: 90%;
+  left: 30px;
+}
+
+.card:hover {
+  // transform: scale(1.1);
+  transition: ease-in-out 300ms;
+  border-radius: 3px;
+  border-left: 6px solid  black;
+  z-index: 99999;
+  background-color: rgba(221, 215, 215, 0.2);
+  color: rgb(0, 0, 0);
+}
+
+.btn:hover {
+  border-left: 5px solid red;
+}
+
+.topButton {
+  display: none;
+  z-index: 99999;
+}
+
+.sideButton {
+  display: initial;
+}
+
+.alertBox {
+  color: green;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 991px) and (min-width: 150px) {
+  .container {
+    padding: 0;
+  }
+
+  .card {
+    margin: 3px;
+    border-radius: 3px;
+    width: 95%;
+    left: 0px;
+  }
+
+  .topButton {
+    display: initial;
+  }
+
+  .sideButton {
+    display: none;
+  }
+
+}
