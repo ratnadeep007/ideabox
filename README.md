@@ -1,27 +1,34 @@
-# AngularDemo
+## Ideabox
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+Ideabox is experimental project byRatnadeep Bhttacharyya to build a place where creators can 
+discuss and improve themselves and with help of community improve there projects may it be a software
+development, IoT, video editing, logo design, image editing are few others.
 
-## Development server
+### For developers
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clone repo 
+```sh
+$ git clone https://github.com/ratnadeep007/ideabox
+```
+You must have angular cli installed.
+If not install it using command:
+```sh
+$ npm install @angular/cli
+```
+After this install dependencies
+```sh
+$ cd ideabox
+$ npm install
+```
+Adding new component and services
+```sh
+$ ng generate component <component_name>
+$ ng generate service <service_name>
+```
+Shorthand
+```sh
+$ ng g c <component_name>
+$ ng g s <service_name>
+```
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[![Angular](https://cdn-images-1.medium.com/max/1600/1*AyVeOIKqYMkpeZRxNOxRjg.png)]
