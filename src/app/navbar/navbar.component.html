@@ -1,18 +1,19 @@
 <header>
   <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark black justify-content-between">
     <logo>
-        <a href="#" class="navbar-brand">IdeaBox</a>
+        <a href="#" class="navbar-brand">IdeaBox<sup>Alpha</sup></a>
     </logo>
     <links>
         <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link waves-light" routerLink="" mdbRippleRadius>Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+              true}">
+              <a class="nav-link waves-light" routerLink="" mdbRippleRadius>Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link waves-light" mdbRippleRadius>Pricing</a>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link waves-light" routerLink="feedback" mdbRippleRadius>Feedback</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" >Disabled</a>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link waves-light" routerLink="about" mdbRippleRadius>About</a>
             </li>
         </ul>
         <button type="button" *ngIf="!authservice.isLoggedIn()" class="btn btn-elegant waves-light ml-auto" (click)="showmodal()" mdbRippleRadius><i class="fa fa-user mr-2" aria-hidden="true"></i>Login</button>

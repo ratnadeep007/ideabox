@@ -1,0 +1,33 @@
+.about {
+  margin: 4px;
+  justify-content: center;
+  text-align: justify;
+  line-height: 2rem;
+}
+
+h4 {
+  margin-top: 2rem;
+}
+
+.git {
+  color: black;
+  font-weight: 500;
+}
+
+.link {
+  color: green;
+  border: 1px solid green;
+  padding: 2px;
+}
+
+.link:hover {
+  color:white;
+  background-color: green;
+  box-shadow: 1px 1px 1px black;
+}
+
+.name:hover{
+  color: white;
+  background-color: black;
+  padding: 2px;
+}

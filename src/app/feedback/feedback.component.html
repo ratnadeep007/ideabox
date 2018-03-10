@@ -1,0 +1,35 @@
+<div class="row justify-content-center feedback">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title" *ngIf="allowFeedback">
+        Any advice, feature request or improvement needed to be done.
+      </div>
+      <div class="card-text" >
+        <div class="thanks" *ngIf="!allowFeedback">
+            <i class="fa fa-smile-o ml-3"></i>
+            <p class="thankstext">
+                {{feedbackText}}
+            </p>
+        </div>
+        <div *ngIf="allowFeedback" class="md-form form-sm">
+          <i class="fa fa-user prefix" aria-hidden="true"></i>
+          <input mdbActive type="text" [(ngModel)]="name" name="title" id="ideaTitle" class="form-control">
+          <label for="ideaTitle" class="">Name</label>
+        </div>
+        <div *ngIf="allowFeedback" class="md-form form-sm">
+          <i class="fa fa-envelope prefix" aria-hidden="true"></i>
+          <input mdbActive type="text" [(ngModel)]="email" name="title" id="ideaTitle" class="form-control">
+          <label for="ideaTitle" class="">E-mail</label>
+        </div>
+        <div *ngIf="allowFeedback" class="md-form">
+          <i class="fa fa-pencil prefix"></i>
+          <textarea [(ngModel)]="suggestion" mdbActive type="text" id="form8" class="md-textarea"></textarea>
+          <label for="form8">What do you want to tell</label>
+        </div>
+        <button *ngIf="allowFeedback" type="button" class="btn btn-elegant waves-light continueButton" mdbRippleRadius>
+            <a class="white-text" (click)="addNew()">Continue</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

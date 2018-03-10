@@ -24,6 +24,8 @@ import { DataComponent } from './data/data.component';
 import { SearchComponent } from './search/search.component';
 import { DetailEditComponent } from './detail-edit/detail-edit.component';
 import { LoginComponent } from './login/login.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { LoginComponent } from './login/login.component';
     DataComponent,
     SearchComponent,
     DetailEditComponent,
-    LoginComponent
+    LoginComponent,
+    FeedbackComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
